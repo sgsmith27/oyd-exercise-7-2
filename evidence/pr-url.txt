@@ -1,0 +1,7 @@
+PR1 - EVIDENCIA SIN CAMBIOS EN INFRA
+
+https://github.com/sgsmith27/oyd-exercise-7-2/pull/1
+
+P2 - EVIDENCIA CON CAMBIOS EN INFRA
+
+https://github.com/sgsmith27/oyd-exercise-7-2/pull/2

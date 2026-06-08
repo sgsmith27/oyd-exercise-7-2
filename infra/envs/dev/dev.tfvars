@@ -1,1 +1,1 @@
-queue_name = "exercise-queue-dev2"
+queue_name = "exercise-queue-devs"
