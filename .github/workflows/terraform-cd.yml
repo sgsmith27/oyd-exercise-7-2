@@ -104,9 +104,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     environment: dev
-    defaults:
-      run:
-        working-directory: infra
 
     steps:
       - uses: actions/checkout@v4
@@ -114,6 +111,7 @@ jobs:
       - uses: hashicorp/setup-terraform@v3
 
       - name: Terraform init
+        working-directory: infra
         run: terraform init -backend-config=envs/dev/backend-dev.hcl
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -121,6 +119,7 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
 
       - name: Terraform plan for dev
+        working-directory: infra
         run: terraform plan -var-file=envs/dev/dev.tfvars -out=tfplan
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -140,6 +139,7 @@ jobs:
           path: infra
 
       - name: Terraform apply dev
+        working-directory: infra
         run: terraform apply -auto-approve tfplan
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
